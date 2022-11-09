@@ -37,6 +37,8 @@
                          (type "vfat")))
                  %base-file-systems))
 
+  (swap-devices `("/swap/swapfile"))
+
   (users (cons (user-account
                 (name "sherex")
                 (password "")
