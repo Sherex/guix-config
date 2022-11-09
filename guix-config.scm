@@ -1,6 +1,6 @@
 (use-modules (gnu) (gnu system nss))
-(use-service-modules desktop xorg)
-(use-package-modules certs gnome vim version-control wm)
+(use-service-modules desktop networking)
+(use-package-modules certs vim version-control wm web-browsers xdisorg terminals freedesktop)
 
 (operating-system
   (host-name "guixtop")
@@ -51,25 +51,22 @@
   (packages (append (list
                      ;; for HTTPS access
                      nss-certs
-                     ;; for user mounts
-                     gvfs
-		     neovim
-		     git
+		     ;; Sway
 		     sway
 		     swaybg
-		     swaylock)
+		     swaylock
+		     ;; User packages (use Guix Home later, but one step at the time..)
+		     git
+		     neovim
+		     qutebrowser
+		     rofi
+		     kitty)
                     %base-packages))
 
-  ;; Add GNOME and Xfce---we can choose at the log-in screen
-  ;; by clicking the gear.  Use the "desktop" services, which
-  ;; include the X11 log-in service, networking with
-  ;; NetworkManager, and more.
-  (services (append (list (service gnome-desktop-service-type)
-                          (service xfce-desktop-service-type)
-                          (set-xorg-configuration
-                           (xorg-configuration
-                            (keyboard-layout keyboard-layout))))
-                    %desktop-services))
+  (services (append (list
+	                  (service elogind-service-type)
+	                  (service dhcp-client-service-type))
+	            %base-services))
 
   ;; Allow resolution of '.local' host names with mDNS.
   (name-service-switch %mdns-host-lookup-nss))
