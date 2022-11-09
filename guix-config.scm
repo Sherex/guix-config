@@ -1,6 +1,6 @@
 (use-modules (gnu) (gnu system nss))
 (use-service-modules desktop networking)
-(use-package-modules certs vim version-control wm web-browsers xdisorg terminals freedesktop)
+(use-package-modules certs vim version-control wm web-browsers xdisorg terminals freedesktop rust-apps)
 
 (operating-system
   (host-name "guixtop")
@@ -60,7 +60,9 @@
 		     neovim
 		     qutebrowser
 		     rofi
-		     kitty)
+		     kitty
+		     ;; Sway user specific
+		     i3status-rust)
                     %base-packages))
 
   (services (append (list
