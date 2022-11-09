@@ -1,6 +1,6 @@
 (use-modules (gnu) (gnu system nss))
-(use-service-modules desktop networking)
-(use-package-modules certs vim version-control wm web-browsers xdisorg terminals freedesktop rust-apps)
+(use-service-modules desktop networking pm)
+(use-package-modules certs vim version-control wm web-browsers xdisorg terminals freedesktop rust-apps linux gnome)
 
 (operating-system
   (host-name "guixtop")
@@ -51,6 +51,10 @@
   (packages (append (list
                      ;; for HTTPS access
                      nss-certs
+		     ;; Power management
+		     upower
+		     tlp
+		     tp-smapi-module ;; Thinkpad specific
 		     ;; Sway
 		     sway
 		     swaybg
@@ -67,7 +71,9 @@
 
   (services (append (list
 	                  (service elogind-service-type)
-	                  (service dhcp-client-service-type))
+	                  (service dhcp-client-service-type)
+			  (service upower-service-type)
+			  (service tlp-service-type))
 	            %base-services))
 
   ;; Allow resolution of '.local' host names with mDNS.
