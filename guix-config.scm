@@ -1,6 +1,6 @@
 (use-modules (gnu) (gnu system nss))
 (use-service-modules desktop xorg)
-(use-package-modules certs gnome vim version-control)
+(use-package-modules certs gnome vim version-control wm)
 
 (operating-system
   (host-name "guixtop")
@@ -54,7 +54,10 @@
                      ;; for user mounts
                      gvfs
 		     neovim
-		     git)
+		     git
+		     sway
+		     swaybg
+		     swaylock)
                     %base-packages))
 
   ;; Add GNOME and Xfce---we can choose at the log-in screen
