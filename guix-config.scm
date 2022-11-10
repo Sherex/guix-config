@@ -19,7 +19,10 @@
   gnome
   fonts
   fontutils
-  bash)
+  bash
+  video
+  image
+  admin)
 
 (operating-system
   (host-name "guixtop")
@@ -77,7 +80,13 @@
                      ;; Sway
                      sway
                      swaybg
-                     swaylock
+                     swaylock-effects
+                     swayidle
+                     ;; Wayland
+                     xdg-desktop-portal-wlr ;; Screensharing and more
+                     mako
+                     gammastep
+                     wl-clipboard
                      ;; Misc
                      bash-completion
                      ;; User packages (use Guix Home later, but one step at the time..)
@@ -86,6 +95,14 @@
                      qutebrowser
                      rofi
                      kitty
+                     wf-recorder
+                     swappy
+                     grim
+                     slurp
+                     bat
+                     fd
+                     htop
+                     btop
                      ;; Fonts
                      font-gnu-freefont
                      font-gnu-unifont
