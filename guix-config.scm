@@ -33,14 +33,17 @@
 
   (bootloader (bootloader-configuration
                 (bootloader grub-efi-bootloader)
-                (target "/boot/efi")
-                (keyboard-layout keyboard-layout)))
-                ;;(menu-entries
-                ;;  (menu-entry
-                ;;    (label "LapArchy")
-                ;;    (linux "/boot/vmlinuxXXX")
-                ;;    (linux-arguments '("root=/dev/sda1"))
-                ;;    (initrd "/boot/initrd")))
+                (targets (list "/boot/efi"))
+                (keyboard-layout keyboard-layout)
+                (menu-entries (list
+                  (menu-entry ;; BUG: kernel and initram images paths are prefixed with BTRFS subvolume
+                              ;; (but they are located on another partition)
+                    (label "LapArchy")
+                    (device (uuid "4C39-6E71" 'fat))
+                    (device-mount-point "/boot")
+                    (linux "/boot/vmlinuz-linux")
+                    (linux-arguments '("root=/dev/sda2" "rw" "rootflags=subvol=subvolumes/root"))
+                    (initrd "/boot/intel-ucode.img /boot/initramfs-linux.img"))))))
 
   (file-systems (append
                  (list (file-system
@@ -59,7 +62,7 @@
                          (type "vfat")))
                  %base-file-systems))
 
-  (swap-devices `("/swap/swapfile"))
+  (swap-devices (list (swap-space (target "/swap/swapfile"))))
 
   (users (cons (user-account
                 (name "sherex")
