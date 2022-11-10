@@ -18,7 +18,8 @@
   linux
   gnome
   fonts
-  fontutils)
+  fontutils
+  bash)
 
 (operating-system
   (host-name "guixtop")
@@ -77,6 +78,8 @@
                      sway
                      swaybg
                      swaylock
+		     ;; Misc
+		     bash-completion
                      ;; User packages (use Guix Home later, but one step at the time..)
                      git
                      neovim
