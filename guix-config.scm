@@ -16,7 +16,9 @@
   freedesktop
   rust-apps
   linux
-  gnome)
+  gnome
+  fonts
+  fontutils)
 
 (operating-system
   (host-name "guixtop")
@@ -81,6 +83,16 @@
                      qutebrowser
                      rofi
                      kitty
+		     ;; Fonts
+		     font-gnu-freefont
+		     font-gnu-unifont
+		     ;;font-google-noto
+		     ;;font-liberation
+		     ;;font-adobe-source-sans-pro
+		     font-hack
+		     font-awesome
+		     ;; Fontconfig
+		     fontconfig
                      ;; Sway user specific
                      i3status-rust)
              %base-packages))
