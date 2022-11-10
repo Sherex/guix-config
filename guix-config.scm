@@ -78,24 +78,24 @@
                      sway
                      swaybg
                      swaylock
-		     ;; Misc
-		     bash-completion
+                     ;; Misc
+                     bash-completion
                      ;; User packages (use Guix Home later, but one step at the time..)
                      git
                      neovim
                      qutebrowser
                      rofi
                      kitty
-		     ;; Fonts
-		     font-gnu-freefont
-		     font-gnu-unifont
-		     ;;font-google-noto
-		     ;;font-liberation
-		     ;;font-adobe-source-sans-pro
-		     font-hack
-		     font-awesome
-		     ;; Fontconfig
-		     fontconfig
+                     ;; Fonts
+                     font-gnu-freefont
+                     font-gnu-unifont
+                     ;;font-google-noto
+                     ;;font-liberation
+                     ;;font-adobe-source-sans-pro
+                     font-hack
+                     font-awesome
+                     ;; Fontconfig
+                     fontconfig
                      ;; Sway user specific
                      i3status-rust)
              %base-packages))
@@ -105,7 +105,7 @@
                      (service dhcp-client-service-type)
                      (service upower-service-type)
                      (service tlp-service-type))
-	     %base-services))
+             %base-services))
 
   ;; Allow resolution of '.local' host names with mDNS.
   (name-service-switch %mdns-host-lookup-nss))
