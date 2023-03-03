@@ -22,7 +22,9 @@
   bash
   video
   image
-  admin)
+  admin
+  xorg
+  qt)
 
 (operating-system
   (host-name "guixtop")
@@ -90,6 +92,7 @@
                      mako
                      gammastep
                      wl-clipboard
+                     egl-wayland
                      ;; Misc
                      bash-completion
                      ;; User packages (use Guix Home later, but one step at the time..)
